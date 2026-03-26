@@ -506,33 +506,27 @@
 
     function update(){
       const sel = {
-        type: getValue("type"),
-        urgence: getValue("urgence"),
-        horaire: getValue("horaire")
+        type: document.querySelector('input[name="type"]:checked').value,
+        urgence: document.querySelector('input[name="urgence"]:checked').value,
+        horaire: document.querySelector('input[name="horaire"]:checked').value
       };
 
-      const base = baseByType[sel.type] ?? 35;
-      const add  = addByUrgence[sel.urgence] ?? 0;
-      const mult = multByHoraire[sel.horaire] ?? 1;
+      const base = baseByType[sel.type] || 35;
+      const add  = addByUrgence[sel.urgence] || 0;
+      const mult = multByHoraire[sel.horaire] || 1;
 
       const estimated = (base + add) * mult;
 
       priceEl.textContent = formatCHF(estimated);
       summaryEl.textContent = `${label.type[sel.type]} • ${label.urgence[sel.urgence]} • ${label.horaire[sel.horaire]}`;
 
-      const msg = buildMessage(sel);
+      const msg = `Bonjour Léman Courses, je souhaiterais une course ${label.type[sel.type]} (${label.urgence[sel.urgence]}) en horaire ${label.horaire[sel.horaire]}. Merci de me confirmer le tarif.`;
       const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
       waBtn.href = waUrl;
 
-      const mailSubject = `Demande de course – ${label.urgence[sel.urgence]} – ${label.type[sel.type]}`;
-      const mailBody =
-        `${msg}\n\n` +
-        `Départ : \nArrivée : \nDate/heure : \nPoids/colis : \n\n` +
-        `Lien : ${SITE}\n`;
-
+      const mailSubject = `Demande de course : ${label.type[sel.type]}`;
+      const mailBody = `Bonjour,\n\nJe souhaite réserver une course :\n- Type : ${label.type[sel.type]}\n- Urgence : ${label.urgence[sel.urgence]}\n- Horaire : ${label.horaire[sel.horaire]}\n\nMerci de me recontacter au plus vite.\n\nCordialement.`;
       mailBtn.href = `mailto:${EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-
-      callBtn.href = `tel:${PHONE}`;
     }
 
     document.querySelectorAll('input[type="radio"]').forEach(r => {
