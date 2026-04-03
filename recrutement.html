@@ -1,1 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rejoignez l'équipe Colixo comme chauffeur livreur. Conditions attractives, flexibilité et revenus motivants.">
+    <title>Devenir Chauffeur — Colixo Transport Express</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --red:       #e8311a;
+            --red-dark:  #c0280f;
+            --red-glow:  rgba(232,49,26,0.22);
+            --night:     #0a0a0f;
+            --night2:    #111118;
+            --night3:    #18181f;
+            --surface:   #1e1e28;
+            --border:    rgba(255,255,255,0.07);
+            --border2:   rgba(255,255,255,0.12);
+            --white:     #ffffff;
+            --muted:     rgba(255,255,255,0.38);
+            --muted2:    rgba(255,255,255,0.6);
+            --green:     #22c55e;
+            --amber:     #f59e0b;
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--night);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── Nav ── */
+        nav {
+            position:fixed; top:0; left:0; right:0; z-index:400;
+            padding:22px 60px;
+            display:flex; align-items:center; justify-content:space-between;
+            background:rgba(10,10,15,0.92);
+            backdrop-filter:blur(20px);
+            border-bottom:1px solid var(--border);
+        }
+        .logo {
+            display:flex; align-items:center; gap:12px;
+            font-family:'Bebas Neue', cursive;
+            font-size:26px; letter-spacing:1px;
+            color:var(--white); text-decoration:none;
+        }
+        .logo-mark {
+            width:38px; height:38px; background:var(--red);
+            border-radius:10px; display:grid; place-items:center;
+            font-size:18px; transition:transform 0.3s;
+        }
+        .logo:hover .logo-mark { transform:rotate(-10deg) scale(1.1); }
+        .logo em { color:var(--red); font-style:normal; }
+        .btn {
+            font-family:'Outfit', sans-serif; font-weight:600; font-size:14px;
+            padding:11px 26px; border-radius:100px; border:none;
+            cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+            transition:all 0.25s; white-space:nowrap; text-decoration:none;
+        }
+        .btn-red {
+            background:var(--red); color:var(--white);
+            box-shadow:0 4px 20px var(--red-glow);
+        }
+        .btn-red:hover { 
+            background:var(--red-dark); 
+            transform:translateY(-2px); 
+            box-shadow:0 8px 32px var(--red-glow); 
+        }
+        .btn-amber {
+            background:var(--amber); color:var(--night);
+        }
+        .btn-amber:hover {
+            background:#d97706;
+            transform:translateY(-2px);
+        }
+
+        /* ── Hero ── */
+        .page-hero {
+            padding:140px 60px 80px;
+            text-align:center;
+            background:linear-gradient(180deg, var(--night2) 0%, var(--night) 100%);
+            border-bottom:1px solid var(--border);
+            position:relative;
+            overflow:hidden;
+        }
+        .page-hero::before {
+            content:''; position:absolute; inset:0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size:60px 60px;
+        }
+        .page-title {
+            font-family:'Bebas Neue', cursive;
+            font-size:clamp(56px, 7vw, 96px);
+            line-height:0.95; letter-spacing:2px;
+            color:var(--white); margin-bottom:24px;
+        }
+        .page-title .accent { color:var(--amber); }
+        .page-subtitle {
+            font-size:18px; color:var(--muted2);
+            max-width:680px; margin:0 auto 40px;
+            line-height:1.6; font-weight:300;
+        }
+        .hero-cta {
+            display:flex;
+            gap:16px;
+            justify-content:center;
+            flex-wrap:wrap;
+        }
+
+        /* ── Avantages ── */
+        .avantages-section {
+            padding:100px 60px;
+        }
+        .section-title {
+            font-family:'Bebas Neue', cursive;
+            font-size:48px;
+            letter-spacing:1px;
+            text-align:center;
+            margin-bottom:60px;
+        }
+        .avantages-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+            gap:32px;
+            max-width:1200px;
+            margin:0 auto;
+        }
+        .avantage-card {
+            background:var(--night2);
+            border:1px solid var(--border2);
+            border-radius:20px;
+            padding:40px 32px;
+            text-align:center;
+            transition:all 0.3s;
+        }
+        .avantage-card:hover {
+            transform:translateY(-6px);
+            border-color:var(--amber);
+        }
+        .avantage-icon {
+            width:80px;
+            height:80px;
+            background:var(--surface);
+            border-radius:16px;
+            display:grid;
+            place-items:center;
+            font-size:36px;
+            margin:0 auto 24px;
+            color:var(--amber);
+        }
+        .avantage-title {
+            font-family:'Bebas Neue', cursive;
+            font-size:24px;
+            letter-spacing:1px;
+            margin-bottom:12px;
+        }
+        .avantage-desc {
+            font-size:14px;
+            color:var(--muted);
+            line-height:1.7;
+            font-weight:300;
+        }
+
+        /* ── Profil recherché ── */
+        .profil-section {
+            padding:100px 60px;
+            background:var(--night2);
+            border-top:1px solid var(--border);
+        }
+        .profil-grid {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:60px;
+            max-width:1200px;
+            margin:0 auto;
+            align-items:center;
+        }
+        .profil-list {
+            display:flex;
+            flex-direction:column;
+            gap:20px;
+        }
+        .profil-item {
+            display:flex;
+            align-items:start;
+            gap:16px;
+            padding:20px;
+            background:var(--night3);
+            border-radius:14px;
+            border:1px solid var(--border);
+        }
+        .profil-check {
+            width:32px;
+            height:32px;
+            background:rgba(245,158,11,0.15);
+            border-radius:8px;
+            display:grid;
+            place-items:center;
+            flex-shrink:0;
+            color:var(--amber);
+            font-size:16px;
+        }
+        .profil-text {
+            font-size:15px;
+            color:var(--muted2);
+            line-height:1.6;
+        }
+        .profil-visual {
+            background:var(--night3);
+            border:1px solid var(--border2);
+            border-radius:24px;
+            padding:40px;
+            text-align:center;
+        }
+        .big-stat {
+            font-family:'Bebas Neue', cursive;
+            font-size:80px;
+            line-height:1;
+            color:var(--amber);
+            margin-bottom:16px;
+        }
+        .big-label {
+            font-size:16px;
+            color:var(--muted);
+        }
+
+        /* ── Formulaire ── */
+        .form-section {
+            padding:100px 60px;
+        }
+        .form-container {
+            max-width:700px;
+            margin:0 auto;
+            background:var(--night2);
+            border:1px solid var(--border2);
+            border-radius:28px;
+            padding:48px;
+        }
+        .form-title {
+            font-family:'Bebas Neue', cursive;
+            font-size:36px;
+            letter-spacing:1px;
+            text-align:center;
+            margin-bottom:40px;
+        }
+        .field {
+            margin-bottom:24px;
+        }
+        .field label {
+            display:block;
+            font-size:12px;
+            font-weight:600;
+            letter-spacing:0.5px;
+            text-transform:uppercase;
+            color:var(--muted);
+            margin-bottom:10px;
+        }
+        .field input, .field textarea, .field select {
+            width:100%;
+            padding:14px 18px;
+            background:var(--surface);
+            border:1.5px solid var(--border2);
+            border-radius:12px;
+            font-family:'Outfit',sans-serif;
+            font-size:15px;
+            color:var(--white);
+            transition:border-color 0.2s;
+        }
+        .field input:focus, .field textarea:focus, .field select:focus {
+            outline:none;
+            border-color:var(--amber);
+        }
+        .field textarea {
+            resize:vertical;
+            min-height:120px;
+        }
+        .submit-btn {
+            width:100%;
+            padding:16px;
+            font-size:16px;
+            justify-content:center;
+        }
+
+        /* ── Footer ── */
+        footer {
+            background:var(--night2);
+            border-top:1px solid var(--border);
+            padding:36px 60px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            gap:20px;
+        }
+        .foot-logo {
+            font-family:'Bebas Neue',cursive;
+            font-size:20px;
+            color:var(--white);
+            letter-spacing:1px;
+        }
+        .foot-logo em { font-style:normal; color:var(--red); }
+        .foot-copy { font-size:13px; color:var(--muted); }
+
+        /* ── Responsive ── */
+        @media(max-width:768px) {
+            nav { padding:16px 20px; }
+            .page-hero { padding:120px 20px 60px; }
+            .avantages-section { padding:60px 20px; }
+            .profil-section { padding:60px 20px; }
+            .profil-grid { grid-template-columns:1fr; gap:40px; }
+            .form-section { padding:60px 20px; }
+            .form-container { padding:32px 20px; }
+            footer { padding:28px 20px; flex-direction:column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+    <a href="/" class="logo">
+        <div class="logo-mark">🚚</div>
+        Colixo
+    </a>
+    <a href="/" class="btn btn-red">
+        <i class="fas fa-arrow-left"></i> Retour
+    </a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="page-hero">
+    <h1 class="page-title">
+        REJOIGNEZ <span class="accent">L'ÉQUIPE</span>
+    </h1>
+    <p class="page-subtitle">
+        Devenez chauffeur livreur Colixo : flexibilité, revenus attractifs et une équipe solidaire à vos côtés.
+    </p>
+    <div class="hero-cta">
+        <a href="#postuler" class="btn btn-amber" style="padding:16px 36px; font-size:16px;">
+            <i class="fas fa-paper-plane"></i> Postuler maintenant
+        </a>
+        <a href="mailto:recrutement@colixo.ch" class="btn btn-red" style="padding:16px 36px; font-size:16px;">
+            <i class="fas fa-envelope"></i> Nous contacter
+        </a>
+    </div>
+</section>
+
+<!-- ═══ AVANTAGES ═══ -->
+<section class="avantages-section">
+    <h2 class="section-title">POURQUOI NOUS REJOINDRE ?</h2>
+    <div class="avantages-grid">
+        <div class="avantage-card">
+            <div class="avantage-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="avantage-title">REVENUS ATTRACTIFS</div>
+            <div class="avantage-desc">
+                CHF 25–35/h selon expérience + primes sur objectifs. Paiement hebdomadaire garanti.
+            </div>
+        </div>
+        <div class="avantage-card">
+            <div class="avantage-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="avantage-title">FLEXIBILITÉ</div>
+            <div class="avantage-desc">
+                Choisissez vos créneaux horaires. Temps plein, temps partiel ou missions ponctuelles.
+            </div>
+        </div>
+        <div class="avantage-card">
+            <div class="avantage-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="avantage-title">APP MODERNE</div>
+            <div class="avantage-desc">
+                Application chauffeur intuitive : tournées optimisées, navigation GPS, signature électronique.
+            </div>
+        </div>
+        <div class="avantage-card">
+            <div class="avantage-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="avantage-title">ASSURANCES</div>
+            <div class="avantage-desc">
+                Couverture complète : accident, RC professionnelle, assurance marchandise transportée.
+            </div>
+        </div>
+        <div class="avantage-card">
+            <div class="avantage-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="avantage-title">FORMATION</div>
+            <div class="avantage-desc">
+                Formation complète payée : utilisation app, techniques de livraison, service client.
+            </div>
+        </div>
+        <div class="avantage-card">
+            <div class="avantage-icon"><i class="fas fa-users"></i></div>
+            <div class="avantage-title">ÉQUIPE SOUDÉE</div>
+            <div class="avantage-desc">
+                Ambiance conviviale, support dispatch 7j/7, événements d'équipe réguliers.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PROFIL RECHERCHÉ ═══ -->
+<section class="profil-section">
+    <h2 class="section-title">PROFIL RECHERCHÉ</h2>
+    <div class="profil-grid">
+        <div class="profil-list">
+            <div class="profil-item">
+                <div class="profil-check"><i class="fas fa-check"></i></div>
+                <div class="profil-text">
+                    <strong style="color:var(--white);">Permis B valide</strong> depuis au moins 2 ans
+                </div>
+            </div>
+            <div class="profil-item">
+                <div class="profil-check"><i class="fas fa-check"></i></div>
+                <div class="profil-text">
+                    <strong style="color:var(--white);">Ponctualité</strong> et sens des responsabilités
+                </div>
+            </div>
+            <div class="profil-item">
+                <div class="profil-check"><i class="fas fa-check"></i></div>
+                <div class="profil-text">
+                    <strong style="color:var(--white);">Bon relationnel</strong> et service client irréprochable
+                </div>
+            </div>
+            <div class="profil-item">
+                <div class="profil-check"><i class="fas fa-check"></i></div>
+                <div class="profil-text">
+                    <strong style="color:var(--white);">Connaissance de la Suisse romande</strong> (atout majeur)
+                </div>
+            </div>
+            <div class="profil-item">
+                <div class="profil-check"><i class="fas fa-check"></i></div>
+                <div class="profil-text">
+                    <strong style="color:var(--white);">À l'aise avec les outils numériques</strong> (smartphone, GPS, app)
+                </div>
+            </div>
+            <div class="profil-item">
+                <div class="profil-check"><i class="fas fa-check"></i></div>
+                <div class="profil-text">
+                    <strong style="color:var(--white);">Véhicule utilitaire</strong> apprécié (sinon location possible)
+                </div>
+            </div>
+        </div>
+        <div class="profil-visual">
+            <div class="big-stat">CHF 4'500+</div>
+            <div class="big-label">Revenu mensuel moyen<br>pour un temps plein</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FORMULAIRE ═══ -->
+<section class="form-section" id="postuler">
+    <div class="form-container">
+        <h2 class="form-title">POSTULER EN LIGNE</h2>
+        <form onsubmit="submitForm(event)">
+            <div class="field">
+                <label>Nom complet *</label>
+                <input type="text" required placeholder="Prénom Nom">
+            </div>
+            <div class="field">
+                <label>Email *</label>
+                <input type="email" required placeholder="votre@email.ch">
+            </div>
+            <div class="field">
+                <label>Téléphone *</label>
+                <input type="tel" required placeholder="+41 79 123 45 67">
+            </div>
+            <div class="field">
+                <label>Ville de résidence *</label>
+                <input type="text" required placeholder="Ex: Lausanne">
+            </div>
+            <div class="field">
+                <label>Expérience en livraison</label>
+                <select>
+                    <option value="">Sélectionner...</option>
+                    <option value="aucune">Aucune expérience</option>
+                    <option value="1-2ans">1-2 ans</option>
+                    <option value="2-5ans">2-5 ans</option>
+                    <option value="5ans+">Plus de 5 ans</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Disponibilité</label>
+                <select>
+                    <option value="">Sélectionner...</option>
+                    <option value="temps-plein">Temps plein</option>
+                    <option value="temps-partiel">Temps partiel</option>
+                    <option value="ponctuel">Missions ponctuelles</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Votre véhicule</label>
+                <select>
+                    <option value="">Sélectionner...</option>
+                    <option value="utilitaire">J'ai un véhicule utilitaire</option>
+                    <option value="voiture">J'ai une voiture</option>
+                    <option value="aucun">Pas de véhicule (location possible)</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Message / Motivation</label>
+                <textarea placeholder="Parlez-nous de vous et de vos motivations..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-amber submit-btn">
+                <i class="fas fa-paper-plane"></i> Envoyer ma candidature
+            </button>
+        </form>
+        <p style="text-align:center; margin-top:24px; font-size:13px; color:var(--muted); line-height:1.6;">
+            Nous vous répondrons sous <strong style="color:var(--white);">48h</strong>. Pour toute question : <a href="mailto:recrutement@colixo.ch" style="color:var(--amber); text-decoration:none; font-weight:600;">recrutement@colixo.ch</a>
+        </p>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="foot-logo">COLI<em>XO</em></div>
+    <div class="foot-copy">© 2026 Colixo SA · +41 79 870 04 88 · info@colixo.ch</div>
+</footer>
+
+<script>
+function submitForm(e) {
+    e.preventDefault();
+    alert('Merci pour votre candidature ! Nous vous répondrons sous 48h.');
+    // Ici, ajouter l'envoi réel du formulaire (email, API, etc.)
+}
+</script>
+
+</body>
+</html>
 
