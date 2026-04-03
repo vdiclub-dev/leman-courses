@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Découvrez tous les services de transport express Colixo : livraison express, suivi GPS, solutions entreprises et plus.">
-    <title>Nos Services — Colixo Transport Express</title>
+    <meta name="description" content="Tarifs transparents pour transport express Colixo : calculez votre prix en temps réel.">
+    <title>Tarifs & Zones — Colixo Transport Express</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,7 +25,6 @@
             --muted2:    rgba(255,255,255,0.6);
             --green:     #22c55e;
             --blue:      #3b82f6;
-            --amber:     #f59e0b;
         }
         *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; }
@@ -122,155 +121,140 @@
             line-height:1.6; font-weight:300;
         }
 
-        /* ── Services détaillés ── */
-        .services-detailed {
-            padding:100px 60px;
+        /* ── Calculateur ── */
+        .calculator-section {
+            padding:80px 60px;
         }
-        .service-card {
+        .calc-box {
+            max-width:800px;
+            margin:0 auto;
             background:var(--night2);
             border:1px solid var(--border2);
             border-radius:28px;
-            padding:60px;
-            margin-bottom:40px;
-            display:grid;
-            grid-template-columns:120px 1fr;
-            gap:50px;
-            align-items:start;
-            transition:all 0.3s;
-            position:relative;
-            overflow:hidden;
+            padding:48px;
         }
-        .service-card::before {
-            content:''; position:absolute;
-            top:-100px; right:-100px;
-            width:300px; height:300px;
-            background:var(--red);
-            border-radius:50%;
-            opacity:0;
-            transition:opacity 0.4s;
-        }
-        .service-card:hover {
-            background:var(--night3);
-            border-color:var(--border);
-            transform:translateY(-4px);
-        }
-        .service-card:hover::before { opacity:0.04; }
-        .service-icon-big {
-            width:120px; height:120px;
-            background:var(--surface);
-            border-radius:20px;
-            display:grid; place-items:center;
-            font-size:48px;
-            position:relative;
-            z-index:1;
-        }
-        .service-content h2 {
+        .calc-title {
             font-family:'Bebas Neue', cursive;
-            font-size:42px; letter-spacing:1px;
-            color:var(--white);
-            margin-bottom:16px;
+            font-size:36px; letter-spacing:1px;
+            text-align:center;
+            margin-bottom:40px;
         }
-        .service-content p {
-            font-size:16px; color:var(--muted2);
-            line-height:1.7; margin-bottom:32px;
-            font-weight:300;
-        }
-        .service-features {
+        .calc-grid {
             display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns:1fr 1fr;
             gap:24px;
             margin-bottom:32px;
         }
-        .feature-item {
-            display:flex; align-items:start; gap:14px;
-            padding:18px;
+        .field label {
+            display:block;
+            font-size:12px;
+            font-weight:600;
+            letter-spacing:0.5px;
+            text-transform:uppercase;
+            color:var(--muted);
+            margin-bottom:10px;
+        }
+        .field input, .field select {
+            width:100%;
+            padding:14px 18px;
             background:var(--surface);
-            border-radius:14px;
-            border:1px solid var(--border);
-        }
-        .feature-icon {
-            width:40px; height:40px;
-            background:rgba(232,49,26,0.1);
-            border-radius:10px;
-            display:grid; place-items:center;
-            color:var(--red);
-            flex-shrink:0;
-        }
-        .feature-text h4 {
-            font-size:15px; font-weight:600;
+            border:1.5px solid var(--border2);
+            border-radius:12px;
+            font-family:'Outfit',sans-serif;
+            font-size:15px;
             color:var(--white);
-            margin-bottom:6px;
+            transition:border-color 0.2s;
         }
-        .feature-text p {
-            font-size:13px; color:var(--muted);
-            line-height:1.6; margin:0;
+        .field input:focus, .field select:focus {
+            outline:none;
+            border-color:var(--red);
         }
-        .service-pricing {
-            display:flex; align-items:center;
-            justify-content:space-between;
-            padding-top:32px;
-            border-top:1px solid var(--border);
-            flex-wrap:wrap;
-            gap:20px;
+        .field select {
+            cursor:pointer;
         }
-        .price-tag {
+        .calc-result {
+            background:var(--surface);
+            border:2px solid var(--red);
+            border-radius:18px;
+            padding:32px;
+            text-align:center;
+            margin-top:32px;
+        }
+        .calc-result-label {
+            font-size:14px;
+            color:var(--muted);
+            margin-bottom:12px;
+        }
+        .calc-result-price {
             font-family:'Bebas Neue', cursive;
-            font-size:36px; letter-spacing:1px;
-            color:var(--white);
+            font-size:56px;
+            letter-spacing:2px;
+            color:var(--red);
+            line-height:1;
         }
-        .price-tag small {
-            font-family:'Outfit', sans-serif;
-            font-size:14px; color:var(--muted);
-            font-weight:400;
+        .calc-result-details {
+            font-size:13px;
+            color:var(--muted);
+            margin-top:16px;
+            line-height:1.6;
         }
-        .service-cta {
-            display:flex; gap:12px; flex-wrap:wrap;
+        .calc-cta {
+            margin-top:24px;
         }
 
-        /* ── Zones ── */
-        .zones-section {
+        /* ── Grille tarifaire ── */
+        .pricing-section {
             padding:80px 60px;
             background:var(--night2);
             border-top:1px solid var(--border);
         }
-        .zones-title {
+        .section-title {
             font-family:'Bebas Neue', cursive;
-            font-size:48px; letter-spacing:1px;
+            font-size:48px;
+            letter-spacing:1px;
             text-align:center;
             margin-bottom:48px;
         }
-        .zones-grid {
-            display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-            gap:24px;
-            max-width:1200px;
+        .pricing-table {
+            max-width:1000px;
             margin:0 auto;
-        }
-        .zone-card {
             background:var(--night3);
             border:1px solid var(--border2);
-            border-radius:18px;
-            padding:32px;
-            text-align:center;
-            transition:all 0.3s;
+            border-radius:20px;
+            overflow:hidden;
         }
-        .zone-card:hover {
-            border-color:var(--red);
-            transform:translateY(-4px);
+        .pricing-table table {
+            width:100%;
+            border-collapse:collapse;
         }
-        .zone-icon {
-            font-size:36px;
-            margin-bottom:16px;
+        .pricing-table th {
+            background:var(--surface);
+            padding:20px;
+            text-align:left;
+            font-size:13px;
+            font-weight:600;
+            letter-spacing:1px;
+            text-transform:uppercase;
+            color:var(--muted);
+            border-bottom:1px solid var(--border);
         }
-        .zone-name {
+        .pricing-table td {
+            padding:20px;
+            border-bottom:1px solid var(--border);
+            color:var(--muted2);
+            font-size:15px;
+        }
+        .pricing-table tr:last-child td {
+            border-bottom:none;
+        }
+        .pricing-table tr:hover {
+            background:var(--surface);
+        }
+        .price-cell {
             font-family:'Bebas Neue', cursive;
-            font-size:24px; letter-spacing:1px;
-            color:var(--white);
-            margin-bottom:12px;
-        }
-        .zone-cities {
-            font-size:13px; color:var(--muted);
-            line-height:1.6;
+            font-size:24px;
+            letter-spacing:1px;
+            color:var(--red);
         }
 
         /* ── Footer ── */
@@ -298,17 +282,11 @@
             nav { padding:16px 20px; }
             .nav-links { display:none; }
             .page-hero { padding:120px 20px 60px; }
-            .services-detailed { padding:60px 20px; }
-            .service-card {
-                grid-template-columns:1fr;
-                padding:40px 24px;
-                gap:30px;
-            }
-            .service-icon-big {
-                width:80px; height:80px;
-                font-size:36px;
-            }
-            .zones-section { padding:60px 20px; }
+            .calculator-section { padding:60px 20px; }
+            .calc-box { padding:32px 20px; }
+            .calc-grid { grid-template-columns:1fr; }
+            .pricing-section { padding:60px 20px; }
+            .pricing-table { overflow-x:auto; }
             footer { padding:28px 20px; flex-direction:column; }
         }
     </style>
@@ -322,9 +300,9 @@
         Colixo
     </a>
     <div class="nav-links">
-        <a href="/" >Accueil</a>
-        <a href="/services.html" class="active">Services</a>
-        <a href="/tarifs.html">Tarifs</a>
+        <a href="/">Accueil</a>
+        <a href="/services.html">Services</a>
+        <a href="/tarifs.html" class="active">Tarifs</a>
         <a href="/about.html">À propos</a>
         <a href="/faq.html">FAQ</a>
         <a href="/contact.html">Contact</a>
@@ -337,233 +315,131 @@
 <!-- ═══ HERO ═══ -->
 <section class="page-hero">
     <div class="breadcrumb">
-        <a href="/">Accueil</a> / Nos Services
+        <a href="/">Accueil</a> / Tarifs & Zones
     </div>
     <h1 class="page-title">
-        NOS <span class="accent">SERVICES</span>
+        TARIFS <span class="accent">TRANSPARENTS</span>
     </h1>
     <p class="page-subtitle">
-        Transport express, suivi GPS en temps réel et solutions sur mesure pour entreprises en Suisse romande.
+        Calculez votre tarif en temps réel. Pas de frais cachés, pas de surprises.
     </p>
 </section>
 
-<!-- ═══ SERVICES DÉTAILLÉS ═══ -->
-<section class="services-detailed">
-    
-    <!-- Service 1 : Express -->
-    <div class="service-card">
-        <div class="service-icon-big" style="color:var(--red);">
-            <i class="fas fa-bolt"></i>
-        </div>
-        <div class="service-content">
-            <h2>EXPRESS MÊME JOUR</h2>
-            <p>
-                Livraison ultra-rapide dans les 3 heures sur toute la Suisse romande. Idéal pour les documents urgents, pièces détachées, médicaments ou tout envoi nécessitant une livraison immédiate.
-            </p>
-            
-            <div class="service-features">
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                    <div class="feature-text">
-                        <h4>Délai garanti 3h</h4>
-                        <p>Prise en charge sous 30 min, livraison garantie dans les 3h max</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-route"></i></div>
-                    <div class="feature-text">
-                        <h4>Tournée directe</h4>
-                        <p>Votre colis part immédiatement vers sa destination</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="feature-text">
-                        <h4>Assurance incluse</h4>
-                        <p>Jusqu'à CHF 2'000 automatiquement</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
-                    <div class="feature-text">
-                        <h4>Suivi temps réel</h4>
-                        <p>GPS live + notifications à chaque étape</p>
-                    </div>
-                </div>
+<!-- ═══ CALCULATEUR ═══ -->
+<section class="calculator-section">
+    <div class="calc-box">
+        <h2 class="calc-title">CALCULATEUR DE PRIX</h2>
+        
+        <div class="calc-grid">
+            <div class="field">
+                <label>Ville de départ</label>
+                <select id="departure">
+                    <option value="">Sélectionner...</option>
+                    <option value="geneva">Genève</option>
+                    <option value="lausanne">Lausanne</option>
+                    <option value="sion">Sion</option>
+                    <option value="fribourg">Fribourg</option>
+                    <option value="neuchatel">Neuchâtel</option>
+                    <option value="yverdon">Yverdon-les-Bains</option>
+                </select>
             </div>
-
-            <div class="service-pricing">
-                <div class="price-tag">
-                    Dès CHF 35.– <small>/ envoi</small>
-                </div>
-                <div class="service-cta">
-                    <a href="/login/index.html?portal=client&next=%2Fadmin%2Fclient%2Fportal.html" class="btn btn-red">
-                        <i class="fas fa-paper-plane"></i> Commander maintenant
-                    </a>
-                </div>
+            <div class="field">
+                <label>Ville d'arrivée</label>
+                <select id="arrival">
+                    <option value="">Sélectionner...</option>
+                    <option value="geneva">Genève</option>
+                    <option value="lausanne">Lausanne</option>
+                    <option value="sion">Sion</option>
+                    <option value="fribourg">Fribourg</option>
+                    <option value="neuchatel">Neuchâtel</option>
+                    <option value="yverdon">Yverdon-les-Bains</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Poids du colis (kg)</label>
+                <input type="number" id="weight" placeholder="Ex: 5" min="0" step="0.5">
+            </div>
+            <div class="field">
+                <label>Type de service</label>
+                <select id="service">
+                    <option value="express">Express (3h max)</option>
+                    <option value="standard">Standard (même jour)</option>
+                    <option value="next">Jour suivant</option>
+                </select>
             </div>
         </div>
-    </div>
 
-    <!-- Service 2 : Suivi GPS -->
-    <div class="service-card">
-        <div class="service-icon-big" style="color:var(--blue);">
-            <i class="fas fa-map-marked-alt"></i>
-        </div>
-        <div class="service-content">
-            <h2>SUIVI GPS EN TEMPS RÉEL</h2>
-            <p>
-                Suivez vos colis à la seconde près grâce à notre interface de tracking en direct. Vos clients et vous-même recevez des notifications automatiques à chaque étape du parcours.
-            </p>
-            
-            <div class="service-features">
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="feature-text">
-                        <h4>Position exacte</h4>
-                        <p>Carte interactive avec position du chauffeur actualisée en temps réel</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
-                    <div class="feature-text">
-                        <h4>Notifications auto</h4>
-                        <p>SMS/Email à la collecte, en route et à la livraison</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-history"></i></div>
-                    <div class="feature-text">
-                        <h4>Historique complet</h4>
-                        <p>Traçabilité totale de chaque envoi avec horodatage</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-signature"></i></div>
-                    <div class="feature-text">
-                        <h4>Preuve de livraison</h4>
-                        <p>Signature électronique + photo à la réception</p>
-                    </div>
-                </div>
+        <button class="btn btn-red" style="width:100%; justify-content:center; font-size:16px; padding:16px;" onclick="calculatePrice()">
+            <i class="fas fa-calculator"></i> Calculer le prix
+        </button>
+
+        <div class="calc-result" id="result" style="display:none;">
+            <div class="calc-result-label">Tarif estimé</div>
+            <div class="calc-result-price" id="priceDisplay">CHF 45.–</div>
+            <div class="calc-result-details" id="details">
+                ✓ Assurance incluse (CHF 2'000)<br>
+                ✓ Suivi GPS en temps réel<br>
+                ✓ Signature électronique + photo
             </div>
-
-            <div class="service-pricing">
-                <div class="price-tag">
-                    Inclus <small>dans tous les envois</small>
-                </div>
-                <div class="service-cta">
-                    <a href="/login/index.html?portal=client&next=%2Fadmin%2Fclient%2Fportal.html" class="btn btn-red">
-                        <i class="fas fa-eye"></i> Voir une démo
-                    </a>
-                </div>
+            <div class="calc-cta">
+                <a href="/login/index.html?portal=client&next=%2Fadmin%2Fclient%2Fportal.html" class="btn btn-red">
+                    <i class="fas fa-paper-plane"></i> Commander maintenant
+                </a>
             </div>
         </div>
     </div>
-
-    <!-- Service 3 : Comptes entreprises -->
-    <div class="service-card">
-        <div class="service-icon-big" style="color:var(--green);">
-            <i class="fas fa-building"></i>
-        </div>
-        <div class="service-content">
-            <h2>SOLUTIONS ENTREPRISES</h2>
-            <p>
-                Plateforme dédiée pour gérer tous vos envois professionnels : dashboard complet, facturation mensuelle consolidée, API d'intégration et tarifs négociés selon vos volumes.
-            </p>
-            
-            <div class="service-features">
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    <div class="feature-text">
-                        <h4>Dashboard professionnel</h4>
-                        <p>Gestion centralisée, statistiques, export CSV/PDF</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <div class="feature-text">
-                        <h4>Facturation mensuelle</h4>
-                        <p>Une seule facture consolidée, paiement à 30 jours</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-code"></i></div>
-                    <div class="feature-text">
-                        <h4>API d'intégration</h4>
-                        <p>Connectez Colixo à votre ERP, CRM ou e-commerce</p>
-                    </div>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
-                    <div class="feature-text">
-                        <h4>Tarifs négociés</h4>
-                        <p>Prix dégressifs selon vos volumes mensuels</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-pricing">
-                <div class="price-tag">
-                    Sur devis <small>/ volume personnalisé</small>
-                </div>
-                <div class="service-cta">
-                    <a href="mailto:info@colixo.ch" class="btn btn-red">
-                        <i class="fas fa-envelope"></i> Demander un devis
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </section>
 
-<!-- ═══ ZONES COUVERTES ═══ -->
-<section class="zones-section">
-    <h2 class="zones-title">ZONES COUVERTES</h2>
-    <div class="zones-grid">
-        <div class="zone-card">
-            <div class="zone-icon">🏙️</div>
-            <div class="zone-name">GENÈVE</div>
-            <div class="zone-cities">
-                Genève, Vernier, Meyrin, Carouge, Lancy, Onex, Thônex, Versoix
-            </div>
-        </div>
-        <div class="zone-card">
-            <div class="zone-icon">🌆</div>
-            <div class="zone-name">LAUSANNE</div>
-            <div class="zone-cities">
-                Lausanne, Renens, Pully, Morges, Prilly, Écublens, Vevey, Montreux
-            </div>
-        </div>
-        <div class="zone-card">
-            <div class="zone-icon">🏔️</div>
-            <div class="zone-name">VALAIS</div>
-            <div class="zone-cities">
-                Sion, Martigny, Sierre, Monthey, Fully, Saxon, Conthey
-            </div>
-        </div>
-        <div class="zone-card">
-            <div class="zone-icon">🌲</div>
-            <div class="zone-name">FRIBOURG</div>
-            <div class="zone-cities">
-                Fribourg, Bulle, Villars-sur-Glâne, Marly, Givisiez
-            </div>
-        </div>
-        <div class="zone-card">
-            <div class="zone-icon">⚙️</div>
-            <div class="zone-name">NEUCHÂTEL</div>
-            <div class="zone-cities">
-                Neuchâtel, La Chaux-de-Fonds, Le Locle, Val-de-Travers
-            </div>
-        </div>
-        <div class="zone-card">
-            <div class="zone-icon">🏞️</div>
-            <div class="zone-name">VAUD NORD</div>
-            <div class="zone-cities">
-                Yverdon-les-Bains, Yvonand, Grandson, Orbe, Sainte-Croix
-            </div>
-        </div>
+<!-- ═══ GRILLE TARIFAIRE ═══ -->
+<section class="pricing-section">
+    <h2 class="section-title">GRILLE TARIFAIRE</h2>
+    <div class="pricing-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Distance</th>
+                    <th>Express (3h)</th>
+                    <th>Standard (jour)</th>
+                    <th>Jour suivant</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0-20 km</td>
+                    <td class="price-cell">CHF 35.–</td>
+                    <td class="price-cell">CHF 25.–</td>
+                    <td class="price-cell">CHF 18.–</td>
+                </tr>
+                <tr>
+                    <td>20-50 km</td>
+                    <td class="price-cell">CHF 45.–</td>
+                    <td class="price-cell">CHF 35.–</td>
+                    <td class="price-cell">CHF 25.–</td>
+                </tr>
+                <tr>
+                    <td>50-100 km</td>
+                    <td class="price-cell">CHF 65.–</td>
+                    <td class="price-cell">CHF 50.–</td>
+                    <td class="price-cell">CHF 35.–</td>
+                </tr>
+                <tr>
+                    <td>100-150 km</td>
+                    <td class="price-cell">CHF 85.–</td>
+                    <td class="price-cell">CHF 65.–</td>
+                    <td class="price-cell">CHF 45.–</td>
+                </tr>
+                <tr>
+                    <td>150+ km</td>
+                    <td class="price-cell">Sur devis</td>
+                    <td class="price-cell">Sur devis</td>
+                    <td class="price-cell">CHF 55.–</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    <p style="text-align:center; margin-top:32px; font-size:13px; color:var(--muted); max-width:700px; margin-left:auto; margin-right:auto; line-height:1.6;">
+        <strong style="color:var(--white);">Inclus dans tous les tarifs :</strong> Assurance jusqu'à CHF 2'000, suivi GPS temps réel, signature électronique, photo de livraison, notifications automatiques.
+    </p>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
@@ -572,6 +448,33 @@
     <div class="foot-copy">© 2026 Colixo SA · +41 79 870 04 88 · info@colixo.ch</div>
 </footer>
 
+<script>
+function calculatePrice() {
+    const departure = document.getElementById('departure').value;
+    const arrival = document.getElementById('arrival').value;
+    const weight = document.getElementById('weight').value;
+    const service = document.getElementById('service').value;
+
+    if (!departure || !arrival || !weight) {
+        alert('Veuillez remplir tous les champs');
+        return;
+    }
+
+    // Calcul simple (remplacer par votre vraie logique)
+    const basePrice = {
+        express: 45,
+        standard: 35,
+        next: 25
+    }[service];
+
+    const weightSurcharge = weight > 10 ? (weight - 10) * 2 : 0;
+    const total = basePrice + weightSurcharge;
+
+    document.getElementById('priceDisplay').textContent = `CHF ${total}.–`;
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+
 </body>
 </html>
-
